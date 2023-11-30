@@ -30,32 +30,3 @@ button {
 #timestamp {
     margin-top: 20px;
 }
-
-
-/* slider */
-
-#slider-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-#slider {
-    background-color: #ddd;
-    width: 30px;
-    height: 300px;
-    border-radius: 15px;
-    position: relative;
-}
-
-#handle {
-    width: 30px;
-    height: 30px;
-    background-color: #666;
-    border-radius: 15px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
