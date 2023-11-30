@@ -13,13 +13,14 @@
             "type": "shell",
             "command": "docker rm tick || true",
             "problemMatcher": [],
+            "dependsOn": ["Stop Existing Container"],
             "group": "build"
         },
         {
             "label": "Build Docker Image",
             "type": "shell",
             "command": "docker build -t tick .",
-            "dependsOn": ["Stop Existing Container", "Remove Existing Container"],
+            "dependsOn": ["Remove Existing Container"],
             "problemMatcher": [],
             "group": "build"
         },
