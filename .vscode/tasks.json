@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Stop Existing Container",
+            "type": "shell",
+            "command": "docker stop tick || true",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Remove Existing Container",
+            "type": "shell",
+            "command": "docker rm tick || true",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Build Docker Image",
+            "type": "shell",
+            "command": "docker build -t tick .",
+            "dependsOn": ["Stop Existing Container", "Remove Existing Container"],
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Run Docker Container",
+            "type": "shell",
+            "command": "docker run --name tick -d -p 80:80 tick",
+            "dependsOn": ["Build Docker Image"],
+            "problemMatcher": []
+        }
+    ]
+}
