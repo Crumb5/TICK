@@ -36,7 +36,6 @@ body {
 }
 
 .slider {
-    -webkit-appearance: none; /* Override default look */
     width: 40px; /* Width of the slider */
     position: absolute;
     right: 5px; /* Adjust as needed */
