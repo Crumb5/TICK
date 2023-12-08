@@ -4,31 +4,35 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="slider-container">
-        <div>
-            <input type="range" min="-5" max="5" value="0" class="slider" id="mySlider" orient="vertical">
+    <div class="datetime-container">
+        <div class="input-slider-container">
+            <input type="text" class="input" id="dayInput" placeholder="DD">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="daySlider" orient="vertical">
         </div>
-        <div>
-            <p>Value: <span id="sliderValue">0</span></p>
+        <span>/</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="monthInput" placeholder="MM">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="monthSlider" orient="vertical">
         </div>
-        <div>
-            <p>Result: <span id="resultValue">0</span></p>
+        <span>/</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="yearInput" placeholder="YYYY">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="yearSlider" orient="vertical">
         </div>
-        <div id="dateContainer">
-            <input type="text" id="dayInput" placeholder="DD">
-            <span>/</span>
-            <input type="text" id="monthInput" placeholder="MM">
-            <span>/</span>
-            <input type="text" id="yearInput" placeholder="YYYY">
+        <div class="input-slider-container">
+            <input type="text" class="input" id="hourInput" placeholder="HH">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="hourSlider" orient="vertical">
         </div>
-        
-        <div id="timeContainer">
-            <input type="text" id="hourInput" placeholder="HH">
-            <span>:</span>
-            <input type="text" id="minuteInput" placeholder="MM">
-            <span>:</span>
-            <input type="text" id="secondInput" placeholder="SS">
-        </div>             
+        <span>:</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="minuteInput" placeholder="MM">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="minuteSlider" orient="vertical">
+        </div>
+        <span>:</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="secondInput" placeholder="SS">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="secondSlider" orient="vertical">
+        </div>       
     </div>
     <script src="script.js"></script>
 </body>
