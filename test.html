@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="slider-container">
+        <div>
+            <input type="range" min="-5" max="5" value="0" class="slider" id="mySlider" orient="vertical">
+        </div>
+        <div>
+            <p>Value: <span id="sliderValue">0</span></p>
+        </div>
+        <div>
+            <p>Result: <span id="resultValue">0</span></p>
+        </div>
+        <div id="dateContainer">
+            <input type="text" id="dayInput" placeholder="DD">
+            <span>/</span>
+            <input type="text" id="monthInput" placeholder="MM">
+            <span>/</span>
+            <input type="text" id="yearInput" placeholder="YYYY">
+        </div>
+        
+        <div id="timeContainer">
+            <input type="text" id="hourInput" placeholder="HH">
+            <span>:</span>
+            <input type="text" id="minuteInput" placeholder="MM">
+            <span>:</span>
+            <input type="text" id="secondInput" placeholder="SS">
+        </div>             
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
