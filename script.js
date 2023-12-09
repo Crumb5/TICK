@@ -1,21 +1,37 @@
 var counter;
 var date = new Date();
-var inputElements = document.querySelectorAll('.slider');
+var sliders = document.querySelectorAll('.slider');
+
 updateInputFields()
 generateAndShowTimestamp()
 
-inputElements.forEach(function(slug){
+sliders.forEach(function(slug){
     slug.oninput = function(){
         console.log('Log:', (this.id).replace('Slider', ''));
         slugSlide(this, (this.id).replace('Slider', ''));
     };
-    slug.onchange = function(slug){
+    slug.onchange = function(){
         this.value = 0;
         console.log("On Changed!");
         generateAndShowTimestamp()
         clearInterval(counter);
     };
 });
+
+function attachTimestampClickListeners() {
+    var timestamps = document.querySelectorAll('.timestamps');
+    timestamps.forEach(function(timestamp){
+        timestamp.addEventListener('click',function(){
+            const text = this.innerText;
+            console.log(text);
+            navigator.clipboard.writeText(text).then(() => {
+                console.log('Text copied to clipboard');
+            }).catch(err => {
+                console.error('Error in copying text: ', err);
+            });
+        });
+    });
+}
 
 function generateDiscordTimestamp(date) {
     const styles = ['t', 'T', 'd', 'D', 'f', 'F', 'R'];
@@ -34,13 +50,11 @@ function generateDiscordTimestamp(date) {
 
     styles.forEach(style => {
         let formattedDate = style !== 'R' ? new Date(date.getTime()).toLocaleString('en-US', optionsMap[style]) : 'Relative Time';
-        output += `<code>&lt;t:${timestamp}:${style}&gt;</code> ${formattedDate}<br />`;
+        output += `<code class="timestamps">&lt;t:${timestamp}:${style}&gt;</code> ${formattedDate}<br />`;
     });
 
     return output;
 }
-
-
 
 function slugSlide(slugSliderElement, slugDatePart){
 
@@ -112,6 +126,7 @@ function generateAndShowTimestamp() {
         return;
     }
     var discordTimestamp = generateDiscordTimestamp(date);
-    console.log(discordTimestamp)
     document.getElementById('timestamp').innerHTML = discordTimestamp;
+    attachTimestampClickListeners();
 }
+
