@@ -41,7 +41,6 @@ body {
     top: 50%;
     transform: translateY(-50%); 
     background: transparent;
-    pointer-events: none; 
 }
 
 span {
