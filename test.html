@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>T.I.C.K</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        #testContainer{
+            display: flex;
+            justify-content: center;
+        }
+        #testSlider {
+            width: 50px; 
+            height: 100px; 
+            background-color: #ddd;
+            position: relative;
+        }
+
+        #testThumb {
+            width: 50px;
+            height: 20px;
+            background-color: blue;
+            position: absolute;
+            border-radius: 25%;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <div class="datetime-container">
-        <div class="input-slider-container">
-            <input type="text" class="input" id="dayInput" placeholder="DD">
-            <input type="range" min="-5" max="5" value="0" class="slider" id="daySlider" orient="vertical">
-        </div>
-        <span>/</span>
-        <div class="input-slider-container">
-            <input type="text" class="input" id="monthInput" placeholder="MM">
-            <input type="range" min="-5" max="5" value="0" class="slider" id="monthSlider" orient="vertical">
-        </div>
-        <span>/</span>
-        <div class="input-slider-container">
-            <input type="text" class="input" id="yearInput" placeholder="YYYY">
-            <input type="range" min="-5" max="5" value="0" class="slider" id="yearSlider" orient="vertical">
-        </div>
-        <div class="input-slider-container">
-            <input type="text" class="input" id="hourInput" placeholder="HH">
-            <input type="range" min="-5" max="5" value="0" class="slider" id="hourSlider" orient="vertical">
-        </div>
-        <span>:</span>
-        <div class="input-slider-container">
-            <input type="text" class="input" id="minuteInput" placeholder="MM">
-            <input type="range" min="-5" max="5" value="0" class="slider" id="minuteSlider" orient="vertical">
-        </div>
-        <span>:</span>
-        <div class="input-slider-container">
-            <input type="text" class="input" id="secondInput" placeholder="SS">
-            <input type="range" min="-5" max="5" value="0" class="slider" id="secondSlider" orient="vertical">
-        </div>       
+<div id="testContainer">
+    <input id="testInput" type="text" placeholder="Input...">
+    <div id="testSlider">
+        <div id="testThumb"></div>
     </div>
-    <br />
-    <div class="container">
-        <button onclick="generateAndShowTimestamp()">Generate Timestamp</button>
-        <div id="timestamp"></div>
-    </div>
-    <script src="script.js"></script>
+</div>
+
+<script>
+    const sliderContainer = document.getElementById('testSlider');
+    const sliderThumb = document.getElementById('testThumb');
+
+    let isDragging = false;
+
+    sliderThumb.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        e.preventDefault(); // prevent default drag behavior
+    });
+
+    document.addEventListener('mouseup', function(e) {
+        isDragging = false;
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            const rect = sliderContainer.getBoundingClientRect();
+            let newY = e.clientY - rect.top - (sliderThumb.offsetHeight / 2);
+            newY = Math.max(0, Math.min(newY, rect.height - sliderThumb.offsetHeight));
+            sliderThumb.style.top = newY + 'px';
+        }
+    });
+</script>
+
 </body>
 </html>

@@ -1,19 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T.I.C.K</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <div class="datetime-container">
+        <div class="input-slider-container">
+            <input type="text" class="input" id="dayInput" placeholder="DD">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="daySlider" orient="vertical">
+        </div>
+        <span>/</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="monthInput" placeholder="MM">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="monthSlider" orient="vertical">
+        </div>
+        <span>/</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="yearInput" placeholder="YYYY">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="yearSlider" orient="vertical">
+        </div>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="hourInput" placeholder="HH">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="hourSlider" orient="vertical">
+        </div>
+        <span>:</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="minuteInput" placeholder="MM">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="minuteSlider" orient="vertical">
+        </div>
+        <span>:</span>
+        <div class="input-slider-container">
+            <input type="text" class="input" id="secondInput" placeholder="SS">
+            <input type="range" min="-5" max="5" value="0" class="slider" id="secondSlider" orient="vertical">
+        </div>       
+    </div>
+    <br />
     <div class="container">
-        <h2>Discord Timestamp Generator</h2>
-        <input type="datetime-local" id="datetimeInput">
         <button onclick="generateAndShowTimestamp()">Generate Timestamp</button>
         <div id="timestamp"></div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
