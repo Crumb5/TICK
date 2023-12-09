@@ -8,9 +8,29 @@ body {
     background-color: #f0f0f0;
 }
 
-.datetime-container {
+.date-container {
     display: flex;
-    padding: 50px;
+    padding-top: 150px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.time-container {
+    display: flex;
+    padding-top: 150px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.timestamp-container {
+    display: flex;
+    padding-top: 150px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;

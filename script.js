@@ -1,16 +1,8 @@
-// script.js
-function generateDiscordTimestamp(date) {
-    return `<t:${Math.floor(date.getTime() / 1000)}:f>`;
-}
-
-
-// test
 var counter;
 var date = new Date();
-
-updateInputFields()
-
 var inputElements = document.querySelectorAll('.slider');
+updateInputFields()
+generateAndShowTimestamp()
 
 inputElements.forEach(function(slug){
     slug.oninput = function(){
@@ -20,9 +12,35 @@ inputElements.forEach(function(slug){
     slug.onchange = function(slug){
         this.value = 0;
         console.log("On Changed!");
+        generateAndShowTimestamp()
         clearInterval(counter);
     };
 });
+
+function generateDiscordTimestamp(date) {
+    const styles = ['t', 'T', 'd', 'D', 'f', 'F', 'R'];
+    let output = '';
+    let timestamp = Math.floor(date.getTime() / 1000);
+
+    const optionsMap = {
+        't': { hour: '2-digit', minute: '2-digit', hour12: true }, // Short Time
+        'T': { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }, // Long Time
+        'd': { year: 'numeric', month: '2-digit', day: '2-digit' }, // Short Date
+        'D': { year: 'numeric', month: 'long', day: 'numeric' }, // Long Date
+        'f': { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }, // Short Date/Time
+        'F': { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }, // Long Date/Time
+        'R': {} // Relative Time (not directly supported for conversion in JS)
+    };
+
+    styles.forEach(style => {
+        let formattedDate = style !== 'R' ? new Date(date.getTime()).toLocaleString('en-US', optionsMap[style]) : 'Relative Time';
+        output += `<code>&lt;t:${timestamp}:${style}&gt;</code> ${formattedDate}<br />`;
+    });
+
+    return output;
+}
+
+
 
 function slugSlide(slugSliderElement, slugDatePart){
 
@@ -45,7 +63,6 @@ function slugSlide(slugSliderElement, slugDatePart){
         updateInputFields()
     }, currRate);
 }
-
 
 function slugDisplayUpdate(slugDatePart, incrementBy) {
     switch (slugDatePart) {
@@ -86,6 +103,7 @@ function updateInputFields() {
     hourInput.value = date.getHours();
     minuteInput.value = date.getMinutes();
     secondInput.value = date.getSeconds();
+
 }
 
 function generateAndShowTimestamp() {
@@ -94,8 +112,6 @@ function generateAndShowTimestamp() {
         return;
     }
     var discordTimestamp = generateDiscordTimestamp(date);
-    document.getElementById('timestamp').innerText = discordTimestamp;
+    console.log(discordTimestamp)
+    document.getElementById('timestamp').innerHTML = discordTimestamp;
 }
-
-
-
