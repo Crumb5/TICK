@@ -6,6 +6,27 @@
             display: flex;
             justify-content: center;
         }
+
+        .testInputBox {
+            display: flex;
+            border-width: 2px;
+            border-style: solid;
+            border-color: #333;
+            border-radius: 10px;
+        }
+
+        .testInputBox input {
+            border: 0px;
+            font-size: 30px;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .testInputBox input:focus {
+            border: 0px;
+            outline: none;
+        }
+
         #testSlider {
             width: 50px; 
             height: 100px; 
@@ -25,12 +46,19 @@
 </head>
 <body>
 <div id="testContainer">
-    <input id="testInput" type="text" placeholder="Input...">
-    <div id="testSlider">
-        <div id="testThumb"></div>
+    <div class="testInputBox">
+        <input id="testInput" type="text" placeholder="Input...">
+        <div id="testSlider">
+            <div id="testThumb"></div>
+        </div>
+    </div>
+    <div class="testInputBox">
+        <input id="testInput" type="text" placeholder="Input...">
+        <div id="testSlider">
+            <div id="testThumb"></div>
+        </div>
     </div>
 </div>
-
 <script>
     const sliderContainer = document.getElementById('testSlider');
     const sliderThumb = document.getElementById('testThumb');
